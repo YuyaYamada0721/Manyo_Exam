@@ -1,0 +1,15 @@
+<h1>詳細画面</h1>
+
+<div>
+  <strong>タスク：</strong>
+  <%= @task.task_name %>
+</div>
+
+<div>
+  <strong>内容：</strong>
+  <%= @task.task_content %>
+</div>
+
+<%= link_to '編集', edit_task_path %><br>
+<%= link_to '削除', @task, method: :delete %><br>
+<%= link_to '一覧画面へ戻る', tasks_path %>
