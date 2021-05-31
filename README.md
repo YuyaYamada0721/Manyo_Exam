@@ -58,9 +58,3 @@ git push heroku master
 #masterブランチ以外にいる時
 git push heroku 現在いるブランチ:master
 ```
-8. Basic認証の設定をするなら
-```
-#設定したい"username"と"password"へ入力
-heroku config:set USER=username
-heroku config:set PASS=password
-```
