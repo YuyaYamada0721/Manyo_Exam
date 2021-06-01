@@ -1,14 +1,17 @@
 <h1>タスク一覧画面</h1>
 <%= link_to '新規タスク登録', new_task_path %>
+<%= link_to '終了期限でソートする', tasks_path( sort_expired: "true" ) %>
   <table>
     <tr>
       <th>タスク</th>
       <th>内容</th>
+      <th>終了期限</th>
     </tr>
   <% @tasks.each do |task| %>
     <tr>
       <td class="task_row"><%= task.task_name %></td>
       <td><%= task.task_content %></td>
+      <td><%= task.expiration_deadline %></td>
       <td><%= link_to '詳細', task %></td>
       <td><%= link_to '編集', edit_task_path(task.id) %></td>
       <td><%= link_to '削除', task, method: :delete %></td>
