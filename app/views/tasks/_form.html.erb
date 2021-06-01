@@ -21,6 +21,11 @@
     <%= form.text_area :task_content %>
   </div>
 
+    <div class = "expiration_deadline-field">
+    <%= form.label :タスク内容 %><br>
+    <%= form.date_field :expiration_deadline %>
+  </div>
+
   <%= form.submit 'タスク登録' %>
 
 <% end %>
