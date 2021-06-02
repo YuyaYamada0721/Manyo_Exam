@@ -26,6 +26,11 @@
     <%= form.date_field :expiration_deadline %>
   </div><br>
 
+  <div class = "status-field">
+    <%= form.label :ステータス %><br>
+    <%= form.select :status, [["未着手","未着手"],["着手中","着手中"],["完了","完了"]] %>
+  </div><br>
+
   <%= form.submit 'タスク登録' %>
 
 <% end %>
