@@ -1,22 +1,32 @@
 <h1>タスク一覧画面</h1>
+
+<%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
+  <%= form.label :タスク名 %>
+  <%= form.search_field :task_name %>
+  <%= form.label :ステータス %>
+  <%= form.search_field :status %>
+  <%= form.submit '検索' %>
+<% end %>
+
 <%= link_to '新規タスク登録', new_task_path %>
 <%= link_to '終了期限でソートする', tasks_path( sort_expired: "true" ) %>
-  <table>
-    <tr>
-      <th>タスク</th>
-      <th>内容</th>
-      <th>終了期限</th>
-      <th>ステータス</th>
-    </tr>
-  <% @tasks.each do |task| %>
-    <tr>
-      <td class="task_row"><%= task.task_name %></td>
-      <td><%= task.task_content %></td>
-      <td><%= task.expiration_deadline %></td>
-      <td><%= task.status %></td>
-      <td><%= link_to '詳細', task %></td>
-      <td><%= link_to '編集', edit_task_path(task.id) %></td>
-      <td><%= link_to '削除', task, method: :delete %></td>
-    </tr>
-  <% end %>
-  </table>
+
+<table>
+  <tr>
+    <th>タスク</th>
+    <th>内容</th>
+    <th>終了期限</th>
+    <th>ステータス</th>
+  </tr>
+<% @tasks.each do |task| %>
+  <tr>
+    <td class="task_row"><%= task.task_name %></td>
+    <td><%= task.task_content %></td>
+    <td><%= task.expiration_deadline %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to '詳細', task %></td>
+    <td><%= link_to '編集', edit_task_path(task.id) %></td>
+    <td><%= link_to '削除', task, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
