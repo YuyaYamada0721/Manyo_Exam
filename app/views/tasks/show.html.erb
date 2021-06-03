@@ -1,30 +1,21 @@
 <h1>詳細画面</h1>
 
-<div>
-  <strong>タスク：</strong>
-  <%= @task.task_name %>
-</div>
-
-<div>
-  <strong>内容：</strong>
-  <%= @task.task_content %>
-</div>
-
-<div>
-  <strong>終了期限：</strong>
-  <%= @task.expiration_deadline %>
-</div>
-
-<div>
-  <strong>ステータス：</strong>
-  <%= @task.status %>
-</div>
-
-<div>
-  <strong>優先順位：</strong>
-  <%= @task.priority %>
-</div>
-
-<%= link_to '編集', edit_task_path %><br>
-<%= link_to '削除', @task, method: :delete %><br>
-<%= link_to '一覧画面へ戻る', tasks_path %>
+<table class="table">
+  <tr>
+    <th>タスク</th>
+    <th>内容</th>
+    <th>終了期限</th>
+    <th>ステータス</th>
+    <th>優先順位</th>
+  </tr>
+  <tr>
+    <td><%= @task.task_name %></td>
+    <td><%= @task.task_content %></td>
+    <td><%= @task.expiration_deadline %></td>
+    <td><%= @task.status %></td>
+    <td><%= @task.priority %></td>
+  </tr>
+</table>
+<%= link_to '編集', edit_task_path, class: "btn btn-success" %>
+<%= link_to '削除', @task, method: :delete, class: "btn btn-danger" %>
+<%= link_to '一覧画面へ戻る', tasks_path, class: "btn btn-default"%>
