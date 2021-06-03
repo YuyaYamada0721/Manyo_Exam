@@ -13,7 +13,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task[task_name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
-        find("option[value='1']").select_option
+        find('#task_status').all('option')[1].select_option
         click_on 'タスク登録'
         click_on '一覧画面へ戻る'
         expect(page).to have_content 'あああ'
@@ -47,10 +47,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '終了期限降順機能' do
     context '終了期限でソートした場合' do
       it '終了期限が降順で表示される' do
-        click_link '終了期限でソートする'
+        click_link '終了期限を降順'
         task = all('.task_row')
-        task_0 = task[0]
-        expect(task_0).to have_content 'test_name3'
+        expect(task[0]).to have_content 'test_name3'
       end
     end
   end
