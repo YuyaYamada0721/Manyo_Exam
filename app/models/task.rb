@@ -7,4 +7,8 @@ class Task < ApplicationRecord
     着手中: 1,
     完了: 2
   }
+
+  scope :task_name_fuzzy_search, ->(params) { where('task_name LIKE ?', "%#{params}%") }
+  scope :status_search, ->(params) { where(status: params) }
+
 end
