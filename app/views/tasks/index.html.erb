@@ -8,23 +8,15 @@
   <%= form.submit '検索' %>
 <% end %>
 <%= link_to '新規タスク登録', new_task_path, class:"btn btn-primary" %>
+<%= link_to '終了期限を降順', tasks_path( sort_expired: "true" ), class: "btn btn-default" %>
+<%= link_to '優先順位でソートする', tasks_path( sort_priority: "true" ), class: "btn btn-default" %>
 <table class="table">
   <tr>
     <th>タスク</th>
     <th>内容</th>
-    <th class="dropdown">
-        <a href="#" data-toggle="dropdown">終了期限<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to '終了期限を降順', tasks_path( sort_expired: "true" ) %></li>
-      </ul>
-    </th>
+    <th>終了期限</th>
     <th>ステータス</th>
-    <th class="dropdown">
-        <a href="#" data-toggle="dropdown">優先順位<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to '優先順位でソートする', tasks_path( sort_priority: "true" ) %></li>
-      </ul>
-    </th>
+    <th>優先順位</th>
   </tr>
 <% @tasks.each do |task| %>
   <tr>
