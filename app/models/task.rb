@@ -8,6 +8,12 @@ class Task < ApplicationRecord
     完了: 2
   }
 
+  enum priority: {
+    低: 0,
+    中: 1,
+    高: 2
+  }
+
   scope :task_name_fuzzy_search, ->(params) { where('task_name LIKE ?', "%#{params}%") }
   scope :status_search, ->(params) { where(status: params) }
 
