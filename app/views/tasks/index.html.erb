@@ -4,7 +4,7 @@
   <%= form.label :タスク名 %>
   <%= form.text_field :task_name %>
   <%= form.label :ステータス %>
-  <%= form.select :status, Task.statuses.keys, include_blank: true %>
+  <%= form.select :status, Task.statuses.keys, include_blank: '-' , selected: '-' %>
   <%= form.submit '検索' %>
 <% end %>
 

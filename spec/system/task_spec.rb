@@ -13,11 +13,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task[task_name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
+        find("option[value='1']").select_option
         click_on 'タスク登録'
         click_on '一覧画面へ戻る'
         expect(page).to have_content 'あああ'
         expect(page).to have_content 'いいい'
         expect(page).to have_content '2021-06-03'
+        expect(page).to have_content '着手中'
       end
     end
   end
@@ -45,11 +47,43 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '終了期限降順機能' do
     context '終了期限でソートした場合' do
       it '終了期限が降順で表示される' do
-        click_on '終了期限でソートする'
+        click_link '終了期限でソートする'
         task = all('.task_row')
-        expect(task[0]).to have_content 'test_name3'
-        expect(task[1]).to have_content 'test_name2'
-        expect(task[2]).to have_content 'test_name'
+        task_0 = task[0]
+        expect(task_0).to have_content 'test_name3'
+      end
+    end
+  end
+  describe '検索機能' do
+    context '検索をした場合' do
+      it 'タイトルで検索できる' do
+        fill_in 'task[task_name]', with: 'test_name2'
+        click_on '検索'
+        expect(page).to have_content 'test_name2'
+        expect(page).to have_no_content 'test_name3'
+      end
+    end
+    context 'タスク名であいまい検索をした場合' do
+      it '検索キーワードを含むタスクで絞り込まれる' do
+        fill_in 'task[task_name]', with: '3'
+        click_on '検索'
+        expect(page).to have_content 'test_name3'
+      end
+    end
+    context 'ステータス検索した場合' do
+      it 'ステータスに完全一致するタスクが絞り込まれる' do
+        find("option[value='着手中']").select_option
+        click_on '検索'
+        expect(page).to have_content 'test_name2'
+      end
+    end
+    context 'タイトルのあいまい検索とステータス検索をした場合' do
+      it '検索キーワードをタイトルに含み、かつステータスに完全一致するタスクが絞り込まれる' do
+        fill_in 'task[task_name]', with: '3'
+        find("option[value='未着手']").select_option
+        click_on '検索'
+        expect(page).to have_content 'test_name3'
+        expect(page).to have_no_content 'test_name2'
       end
     end
   end
