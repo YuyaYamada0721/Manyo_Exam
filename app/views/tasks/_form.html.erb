@@ -31,6 +31,11 @@
     <%= form.select :status, options_for_select(Task.statuses) %>
   </div><br>
 
+  <div class = "status-field">
+    <%= form.label :優先順位 %><br>
+    <%= form.select :priority, options_for_select(Task.priorities) %>
+  </div><br>
+
   <%= form.submit 'タスク登録' %>
 
 <% end %>

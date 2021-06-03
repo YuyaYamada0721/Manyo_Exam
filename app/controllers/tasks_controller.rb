@@ -14,6 +14,8 @@ class TasksController < ApplicationController
         end
       elsif params[:sort_expired]
           @tasks = Task.order(expiration_deadline: :desc)
+      elsif params[:sort_priority]
+          @tasks = Task.order(priority: :desc)
       else
           @tasks = Task.all.order(created_at: :desc)
       end
@@ -56,6 +58,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:task_name, :task_content, :expiration_deadline, :status, :task).merge(status: params[:task][:status].to_i)
+    params.require(:task).permit(:task_name, :task_content, :expiration_deadline, :status, :task, :priority).merge(status: params[:task][:status].to_i, priority: params[:task][:priority].to_i)
   end
 end
