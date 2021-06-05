@@ -2,23 +2,23 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-      if params[:task].present?
-        if params[:task][:task_name].present? && params[:task][:status].present?
-          @tasks = Task.task_name_fuzzy_search(params[:task][:task_name]).status_search(params[:task][:status]).page(params[:page]).per(10)
-        elsif params[:task][:task_name].present?
-          @tasks = Task.task_name_fuzzy_search(params[:task][:task_name]).page(params[:page]).per(10)
-        elsif params[:task][:status].present?
-          @tasks = Task.status_search(params[:task][:status]).page(params[:page]).per(10)
-        else
-          @tasks = Task.all.page(params[:page]).per(10)
-        end
-      elsif params[:sort_expired]
-          @tasks = Task.order(expiration_deadline: :desc).page(params[:page]).per(10)
-      elsif params[:sort_priority]
-          @tasks = Task.order(priority: :desc).page(params[:page]).per(10)
+    if params[:task].present?
+      if params[:task][:task_name].present? && params[:task][:status].present?
+        @tasks = current_user.tasks.task_name_fuzzy_search(params[:task][:task_name]).status_search(params[:task][:status]).page(params[:page]).per(10)
+      elsif params[:task][:task_name].present?
+        @tasks = current_user.tasks.task_name_fuzzy_search(params[:task][:task_name]).page(params[:page]).per(10)
+      elsif params[:task][:status].present?
+        @tasks = current_user.tasks.status_search(params[:task][:status]).page(params[:page]).per(10)
       else
-          @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(10)
+        @tasks = current_user.tasks.page(params[:page]).per(10)
       end
+    elsif params[:sort_expired]
+        @tasks = current_user.tasks.order(expiration_deadline: :desc).page(params[:page]).per(10)
+    elsif params[:sort_priority]
+        @tasks = current_user.tasks.order(priority: :desc).page(params[:page]).per(10)
+    else
+        @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def show; end
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to @task, notice: 'タスクを登録しました。'
     else
