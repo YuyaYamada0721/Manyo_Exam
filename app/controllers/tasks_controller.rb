@@ -2,7 +2,23 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+      if params[:task].present?
+        if params[:task][:task_name].present? && params[:task][:status].present?
+          @tasks = Task.task_name_fuzzy_search(params[:task][:task_name]).status_search(params[:task][:status]).page(params[:page]).per(10)
+        elsif params[:task][:task_name].present?
+          @tasks = Task.task_name_fuzzy_search(params[:task][:task_name]).page(params[:page]).per(10)
+        elsif params[:task][:status].present?
+          @tasks = Task.status_search(params[:task][:status]).page(params[:page]).per(10)
+        else
+          @tasks = Task.all.page(params[:page]).per(10)
+        end
+      elsif params[:sort_expired]
+          @tasks = Task.order(expiration_deadline: :desc).page(params[:page]).per(10)
+      elsif params[:sort_priority]
+          @tasks = Task.order(priority: :desc).page(params[:page]).per(10)
+      else
+          @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(10)
+      end
   end
 
   def show; end
@@ -42,6 +58,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:task_name, :task_content)
+    params.require(:task).permit(:task_name, :task_content, :expiration_deadline, :status, :task, :priority).merge(status: params[:task][:status].to_i, priority: params[:task][:priority].to_i)
   end
 end
