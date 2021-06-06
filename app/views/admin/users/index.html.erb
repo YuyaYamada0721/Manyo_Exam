@@ -1,14 +1,12 @@
 <h1>管理画面：ユーザー一覧</h1>
-
+<%= link_to '新規登録', new_admin_user_path, class:"btn btn-primary" %>
   <table class="table">
     <tr>
-      <th>ID</th>
       <th>ユーザー名</th>
       <th>タスクの数</th>
     </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.id %></td>
       <td><%= user.user_name %></td>
       <td><%= user.task_ids.count %></td>
       <td><%= link_to '詳細', user, class: "btn btn-info" %></td>
