@@ -18,5 +18,7 @@
   <%= f.password_field :password %>
   <%= f.label :パスワード確認 %>
   <%= f.password_field :password_confirmation %>
+  <%= f.label :管理者権限 %>
+  <%= f.select :admin, [["管理者","true"],["一般","false"]] %>
   <%= f.submit "更新" %>
 <% end %>
