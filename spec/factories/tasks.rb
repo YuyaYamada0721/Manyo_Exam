@@ -4,6 +4,7 @@ FactoryBot.define do
     task_content { 'test_content' }
     expiration_deadline { Time.current }
     status { 2 }
+    association :user
   end
   factory :task2, class: Task do
     task_name { 'test_name2' }
@@ -11,6 +12,7 @@ FactoryBot.define do
     created_at { Time.current + 1.days }
     expiration_deadline { Time.current + 1.day }
     status { 1 }
+    association :user
   end
   factory :task3, class: Task do
     task_name { 'test_name3' }
@@ -18,5 +20,6 @@ FactoryBot.define do
     created_at { Time.current + 2.days }
     expiration_deadline { Time.current + 2.day }
     status { 0 }
+    association :user
   end
 end

@@ -4,6 +4,7 @@ RSpec.describe 'タスク管理機能', type: :system do
   let!(:task3) { FactoryBot.create(:task3) }
   let!(:task2) { FactoryBot.create(:task2) }
   before do
+    
     visit tasks_path
   end
   describe '新規作成機能' do

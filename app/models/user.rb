@@ -11,14 +11,14 @@ class User < ApplicationRecord
   before_update :last_admin_update
 
   def last_admin_destroy
-    if User.where(admin: 'true').count <= 1 && self.admin == true
-    throw :abort
+    if User.where(admin: true).count == 1 && self.admin == true
+      throw(:abort)
     end
   end
 
   def last_admin_update
-    if User.where(admin: 'true').count == 1 && self.admin == false
-      throw :abort
+    if User.where(admin: true).count == 1 && self.admin == false
+      throw(:abort)
     end
   end
 end
