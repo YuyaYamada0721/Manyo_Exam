@@ -1,19 +1,16 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit destroy]
-
+  before_action :set_user, only: %i[show edit update destroy]
 
   def index
     @users = User.all.includes(:tasks)
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path, notice: '編集しました'
+      redirect_to admin_users_path
     else
       render :edit
     end
@@ -28,5 +25,9 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:user_name, :user_email, :password, :password_confirmation, :admin)
   end
 end
