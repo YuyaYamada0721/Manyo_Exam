@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :admin_user
 
   def index
     @users = User.all.includes(:tasks)
@@ -18,8 +19,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -42,5 +42,12 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:user_name, :user_email, :password, :password_confirmation, :admin)
+  end
+
+  def admin_user
+    unless current_user.admin?
+      redirect_to tasks_path
+      flash[:notice] = '管理者以外はアクセスできない'
+    end
   end
 end

@@ -11,7 +11,7 @@
 
   <body>
     <div class="container">
-    
+
       <header>
         <% if logged_in? %>
           <%= link_to "プロフィール", user_path(current_user.id) %>
@@ -21,8 +21,6 @@
           <%= link_to "ログイン", new_session_path %>
         <% end %>
       </header>
-
-      <p class="alert alert-info"><%= notice %></p>
 
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
