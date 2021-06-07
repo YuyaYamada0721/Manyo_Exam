@@ -1,7 +1,9 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  FactoryBot.create(:task)
-  FactoryBot.create(:task2)
+  let(:user) { FactoryBot.create(:user) }
+  let!(:task) { FactoryBot.create(:task, user_id: user.id) }
+  let!(:task2) { FactoryBot.create(:task2, user_id: user.id) }
+  let!(:task3) { FactoryBot.create(:task3, user_id: user.id) }
   before do
     visit sessions_new_path
     fill_in 'session[user_email]', with: 'foo@foo.com'
