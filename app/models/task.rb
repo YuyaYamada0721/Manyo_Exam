@@ -17,4 +17,5 @@ class Task < ApplicationRecord
   scope :task_name_fuzzy_search, ->(params) { where('task_name LIKE ?', "%#{params}%") }
   scope :status_search, ->(params) { where(status: params) }
 
+  belongs_to :user
 end

@@ -4,6 +4,7 @@ FactoryBot.define do
     task_content { 'test_content' }
     expiration_deadline { Time.current }
     status { 2 }
+    association :user
   end
   factory :task2, class: Task do
     task_name { 'test_name2' }
