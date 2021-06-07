@@ -4,7 +4,7 @@ RSpec.describe 'ユーザー機能', type: :system do
   let!(:user2) { FactoryBot.create(:user2) }
   let!(:user3) { FactoryBot.create(:user3) }
   before do
-
+    visit sessions_new_path
   end
   describe 'ユーザー新規作成機能' do
     context 'ユーザー新規作成した場合' do
