@@ -13,16 +13,8 @@ User.create! users
   )
 end
 
-10.times do |n|
-  user_id = n + 1
-  Task.create!(
-    task_name: test,
-    task_content: test,
-    user_id: user_id
-  )
-end
-
-labels = [
+Label.create!(
+  [
   { label_name: 'A' },
   { label_name: 'B' },
   { label_name: 'C' },
@@ -33,5 +25,20 @@ labels = [
   { label_name: 'H' },
   { label_name: 'I' },
   { label_name: 'J' }
-]
-Label.create! labels
+  ]
+)
+
+Task.create!(
+  [
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 1.day, status: 1, priority: 1, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 2.day, status: 1, priority: 1, user_id: 2},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 3.day, status: 1, priority: 1, user_id: 3},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 4.day, status: 1, priority: 1, user_id: 4},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 5.day, status: 1, priority: 1, user_id: 5},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 6.day, status: 1, priority: 1, user_id: 6},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 7.day, status: 1, priority: 1, user_id: 7},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 8.day, status: 1, priority: 1, user_id: 8},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 9.day, status: 1, priority: 1, user_id: 9},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 10.day, status: 1, priority: 1, user_id:101},
+  ]
+  )
