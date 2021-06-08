@@ -7,6 +7,7 @@
     <th>終了期限</th>
     <th>ステータス</th>
     <th>優先順位</th>
+    <th>ラベル</th>
   </tr>
   <tr>
     <td><%= @task.task_name %></td>
@@ -14,6 +15,9 @@
     <td><%= @task.expiration_deadline %></td>
     <td><%= @task.status %></td>
     <td><%= @task.priority %></td>
+      <% @task.labels.each do |label| %>
+        <td><%= label.label_name %></td>
+      <% end %>
   </tr>
 </table>
 <%= link_to '編集', edit_task_path, class: "btn btn-success" %>

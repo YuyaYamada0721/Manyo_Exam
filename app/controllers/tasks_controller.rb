@@ -10,6 +10,8 @@ class TasksController < ApplicationController
         @tasks = current_user.tasks.task_name_fuzzy_search(params[:task][:task_name]).page(params[:page]).per(10)
       elsif params[:task][:status].present?
         @tasks = current_user.tasks.status_search(params[:task][:status]).page(params[:page]).per(10)
+      elsif params[:task][:label_id].present?
+        @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:task][:label_id] }).page(params[:page]).per(10)
       else
         @tasks = current_user.tasks.page(params[:page]).per(10)
       end
@@ -59,6 +61,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:task_name, :task_content, :expiration_deadline, :status, :task, :priority).merge(status: params[:task][:status].to_i, priority: params[:task][:priority].to_i)
+    params.require(:task).permit(:task_name, :task_content, :expiration_deadline, :status, :task, :priority, { label_ids: [] }).merge(status: params[:task][:status].to_i, priority: params[:task][:priority].to_i)
   end
 end
