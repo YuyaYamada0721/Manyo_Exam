@@ -5,28 +5,16 @@ users = [
 User.create! users
 
 10.times do |n|
+  name = Faker::Games::Pokemon.name
+  email = Faker::Internet.email
+  password = "password"
   User.create!(
-    user_name: "test#{n + 1}",
-    user_email: "test#{n + 1}@test.com",
-    password: "testtest#{n + 1}",
-    admin: 'false'
+    user_name: name,
+    user_email: email,
+    password: password,
+    admin: false
   )
 end
-
-Task.create!(
-  [
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 1.day, status: 1, priority: 1, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 2.day, status: 1, priority: 1, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 3.day, status: 1, priority: 1, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 4.day, status: 1, priority: 1, user_id: 2},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 5.day, status: 1, priority: 1, user_id: 2},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 6.day, status: 1, priority: 1, user_id: 2},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 7.day, status: 1, priority: 1, user_id: 3},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 8.day, status: 1, priority: 1, user_id: 3},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 9.day, status: 1, priority: 1, user_id: 3},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current + 10.day, status: 1, priority: 1, user_id: 4},
-  ]
-  )
 
 Label.create!(
   [
@@ -42,3 +30,16 @@ Label.create!(
   { label_name: 'JJ' }
   ]
 )
+
+10.time do |n|
+  task_name = Faker::Games::Pokemon.move
+  task_content = Faker::Games::Pokemon.location
+  expiration_deadline = Faker::Date.between(from: '2021-06-01', to: '2021-07-01')
+  user_id = n + 1
+  Task.create!(
+    task_name: task_name,
+    task_content: task_content,
+    expiration_deadline: expiration_deadline,
+    user_id: user_id
+  )
+end
