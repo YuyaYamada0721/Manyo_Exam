@@ -1,47 +1,44 @@
 User.create!(
   [
   { user_name: 'yamada', user_email: 'yamada@yamada.com', password: 'yamada', password_confirmation: 'yamada', admin: true },
-  { user_name: 'yamada2', user_email: 'yamada2@yamada.com', password: 'yamada2', password_confirmation: 'yamada2', admin: true }
+  { user_name: 'yamada2', user_email: 'yamada2@yamada.com', password: 'yamada2', password_confirmation: 'yamada2', admin: true },
+  { user_name: 'yamada3', user_email: 'yamada3@yamada.com', password: 'yamada3', password_confirmation: 'yamada3', admin: false },
+  { user_name: 'yamada4', user_email: 'yamada4@yamada.com', password: 'yamada4', password_confirmation: 'yamada4', admin: false },
+  { user_name: 'yamada5', user_email: 'yamada5@yamada.com', password: 'yamada5', password_confirmation: 'yamada5', admin: false },
+  { user_name: 'yamada6', user_email: 'yamada6@yamada.com', password: 'yamada6', password_confirmation: 'yamada6', admin: false },
+  { user_name: 'yamada7', user_email: 'yamada7@yamada.com', password: 'yamada7', password_confirmation: 'yamada7', admin: false },
+  { user_name: 'yamada8', user_email: 'yamada8@yamada.com', password: 'yamada8', password_confirmation: 'yamada8', admin: false },
+  { user_name: 'yamada9', user_email: 'yamada9@yamada.com', password: 'yamada9', password_confirmation: 'yamada9', admin: false },
+  { user_name: 'yamada10', user_email: 'yamada10@yamada.com', password: 'yamada10', password_confirmation: 'yamada10', admin: false }
   ]
 )
-
-8.times do |n|
-  name = Faker::Games::Pokemon.name
-  email = Faker::Internet.email
-  password = "password"
-  User.create!(
-    user_name: name,
-    user_email: email,
-    password: password,
-    password_confirmation: password,
-    admin: false
-  )
-end
 
 Label.create!(
   [
-  { label_name: "Ruby" },
-  { label_name: "Rails" },
-  { label_name: "Python" },
-  { label_name: "Java" },
-  { label_name: "JavaScript" },
-  { label_name: "PHP" },
-  { label_name: "HTML" },
-  { label_name: "CSS" },
-  { label_name: "VBS" },
-  { label_name: "GGG" }
+  { label_name: 'Ruby' },
+  { label_name: 'Rails' },
+  { label_name: 'Python' },
+  { label_name: 'Java' },
+  { label_name: 'JavaScript' },
+  { label_name: 'PHP' },
+  { label_name: 'HTML' },
+  { label_name: 'CSS' },
+  { label_name: 'VBS' },
+  { label_name: 'GGG' }
   ]
 )
 
-10.time do |n|
-  task_name = Faker::Games::Pokemon.move
-  task_content = Faker::Games::Pokemon.location
-  expiration_deadline = Faker::Date.between(from: '2021-06-01', to: '2021-07-01')
-  user_id = n + 1
-  Task.create!(
-    task_name: task_name,
-    task_content: task_content,
-    expiration_deadline: expiration_deadline,
-    user_id: user_id
-  )
-end
+Task.create!(
+  [
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1}
+  ]
+)
