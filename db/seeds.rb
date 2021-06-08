@@ -33,12 +33,14 @@ Task.create!(
     { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
     { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
     { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1},
-    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1}
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4},
+    { task_name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4}
   ]
 )
