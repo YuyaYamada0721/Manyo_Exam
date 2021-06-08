@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
-  root to: 'tasks#index'
+  root to: 'sessions#new'
 
   resources :tasks
   resources :users, only: %i[new create show]
