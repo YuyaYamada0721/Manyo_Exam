@@ -36,6 +36,11 @@
   <div class = "status-field form-group">
     <%= form.label :優先順位 %><br>
     <%= form.select :priority, options_for_select(Task.priorities) %>
+  </div>
+
+  <div class= "label-field form-group">
+    <%= form.label :ラベル： %>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :label_name) %>
   </div><br>
 
   <%= form.submit 'タスク登録' , class: "btn btn-default" %>
