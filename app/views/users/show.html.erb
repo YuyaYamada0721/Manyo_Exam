@@ -1,10 +1,12 @@
 <%= link_to '管理画面', admin_users_path, class: "btn btn-default"%>
+<%= link_to 'タスク管理へ', tasks_path, class: "btn btn-default"%>
 
-<h1><%= @user.user_name %>のページ</h1>
+<h2><%= @user.user_name %>のページ</h2>
 <p>メールアドレス: <%= @user.user_email %></p>
 
-<p><strong>タスク一覧</strong></p>
-<% @tasks.each do |task| %>
+<hr>
+
+<p><strong>終了間近のタスク</strong></p>
   <table class="table">
     <tr>
       <th>タスク</th>
@@ -13,14 +15,35 @@
       <th>ステータス</th>
       <th>優先順位</th>
     </tr>
-    <tr>
-      <td><%= task.task_name %></td>
-      <td><%= task.task_content %></td>
-      <td><%= task.expiration_deadline %></td>
-      <td><%= task.status %></td>
-      <td><%= task.priority %></td>
-    </tr>
-  </table>
-<% end %>
+    <% @near_the_end_task.each do |task| %>
+      <tr>
+        <td><%= task.task_name %></td>
+        <td><%= task.task_content %></td>
+        <td><%= task.expiration_deadline %></td>
+        <td><%= task.status %></td>
+        <td><%= task.priority %></td>
+      </tr>
+    <% end %>
+</table>
 
-<%= link_to 'タスク管理へ', tasks_path, class: "btn btn-default"%>
+<hr>
+
+<p><strong>期限切れのタスク</strong></p>
+  <table class="table">
+    <tr>
+      <th>タスク</th>
+      <th>内容</th>
+      <th>終了期限</th>
+      <th>ステータス</th>
+      <th>優先順位</th>
+    </tr>
+    <% @expired_task.each do |task| %>
+      <tr>
+        <td><%= task.task_name %></td>
+        <td><%= task.task_content %></td>
+        <td><%= task.expiration_deadline %></td>
+        <td><%= task.status %></td>
+        <td><%= task.priority %></td>
+      </tr>
+    <% end %>
+  </table>

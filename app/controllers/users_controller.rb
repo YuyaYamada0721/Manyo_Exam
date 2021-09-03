@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = @user.tasks
+    @near_the_end_task = @user.tasks.where(expiration_deadline: Time.zone.today..Time.zone.today + 3)
+    @expired_task = @user.tasks.where('expiration_deadline < ?', Time.zone.today)
   end
 
   private
