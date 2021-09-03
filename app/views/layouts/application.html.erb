@@ -23,7 +23,11 @@
       </header>
 
       <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
+        <% if key == 'alert' %>
+          <%= content_tag(:div, value, class: "alert-danger #{key}") %>
+        <% else %>
+          <%= content_tag(:div, value, class: "alert-info #{key}") %>
+        <% end %>
       <% end %>
 
       <%= yield %>
