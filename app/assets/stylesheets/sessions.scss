@@ -84,6 +84,7 @@ nav a:hover {
 }
 
 
+// フォーム
 .form-group {
     border-radius: 10px;
     padding: 2rem;
@@ -96,4 +97,31 @@ nav a:hover {
 
 .btn {
     margin: 1rem 0 0 0;
+}
+
+// フォーム見出し
+.form-group h1 {
+    position: relative;
+    padding-left: 25px;
+    margin: 2rem 0 2rem 0;
+}
+
+.form-group h1:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px #337ab7;
+}
+.form-group h1:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 60%;
+    border-bottom: solid 3px #337ab7;
 }
