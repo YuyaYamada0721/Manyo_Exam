@@ -13,17 +13,34 @@
     <div class="container">
 
       <header>
-        <% if logged_in? %>
-          <%= link_to "マイページ", user_path(current_user.id) %>
-          <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-        <% else %>
-          <%= link_to "新規登録", new_user_path %>
-          <%= link_to "ログイン", new_session_path %>
-        <% end %>
-      </header>
+        <div class="row">
+          <div class="col span-12">
+            <div class="head">
+              <h1><a href="index.html">Taskun</a></h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col span-12">
+            <nav>
+              <div id="navi">
+                <ul>
+                  <% if logged_in? %>
+                    <li><%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-info' %></li>
+                    <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: 'btn btn-info' %></li>
+                  <% else %>
+                    <li><%= link_to "新規登録", new_user_path, class: 'btn btn-info' %></li>
+                    <li><%= link_to "ログイン", new_session_path, class: 'btn btn-info' %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+    </header>
 
       <% flash.each do |key, value| %>
-        <% if key == 'alert' %>
+        <% if key == 'alert' || key == 'danger' %>
           <%= content_tag(:div, value, class: "alert-danger #{key}") %>
         <% else %>
           <%= content_tag(:div, value, class: "alert-info #{key}") %>
