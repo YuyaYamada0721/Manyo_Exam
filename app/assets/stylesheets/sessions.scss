@@ -10,23 +10,20 @@
     letter-spacing: 3px;
 }
 
-.snsbox {
-    margin-left: auto;
-    font-size: 3.0rem;
-    padding: 1rem 0 0 0;
+.head a {
+    text-decoration: none;
 }
 
 nav ul {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    float: right;
     list-style: none;
-    margin-bottom: 0.5rem;
 }
 
 nav li {
     display: block;
-    flex: 0 0 15%;
+    margin: 0 1rem 0 0;
 }
 
 nav li a {
@@ -35,11 +32,7 @@ nav li a {
 }
 
 nav a:hover {
-    text-decoration: underline;
-}
-
-nav a {
-    padding: 1rem;
+    text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
