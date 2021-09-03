@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @near_the_end_task = @user.tasks.where(expiration_deadline: Time.zone.today..Time.zone.today + 3)
-    @expired_task = @user.tasks.where('expiration_deadline < ?', Time.zone.today)
+    @near_the_end_task = @user.tasks.where(expiration_deadline: Time.zone.today..Time.zone.today + 3).where.not(status: '完了')
+    @expired_task = @user.tasks.where('expiration_deadline < ?', Time.zone.today).where.not(status: '完了')
 
     if @near_the_end_task.present? && @expired_task.present?
       flash[:alert] = '終了間近のタスクと期限切れのタスクがあります！'
