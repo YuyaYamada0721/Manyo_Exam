@@ -54,7 +54,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '終了期限が降順で表示される' do
         click_link '終了期限を降順'
         task = all('.task_row')
-        expect(task[0]).to have_content 'test_name3'
+        expect(task[0]).to have_content 'test_name'
       end
     end
   end
