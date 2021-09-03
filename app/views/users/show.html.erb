@@ -1,12 +1,12 @@
 <%= link_to '管理画面', admin_users_path, class: "btn btn-default"%>
 <%= link_to 'タスク管理へ', tasks_path, class: "btn btn-default"%>
 
-<h2><%= @user.user_name %>のページ</h2>
-<p>メールアドレス: <%= @user.user_email %></p>
+<div class='profile'>
+  <p><%= @user.user_name %>のページ</p>
+  <p>メールアドレス: <%= @user.user_email %></p>
+</div>
 
-<hr>
-
-<p><strong>終了間近のタスク</strong></p>
+<p class='user-show-label'>終了間近のタスク</p>
   <table class="table">
     <tr>
       <th>タスク</th>
@@ -24,11 +24,11 @@
         <td><%= task.priority %></td>
       </tr>
     <% end %>
-</table>
+  </table>
 
 <hr>
 
-<p><strong>期限切れのタスク</strong></p>
+<p class='user-show-label'>期限切れのタスク</p>
   <table class="table">
     <tr>
       <th>タスク</th>
