@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 2021_06_08_073840) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "user_email"
+    t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.index ["user_email"], name: "index_users_on_user_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "labellings", "labels"

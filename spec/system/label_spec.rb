@@ -6,7 +6,7 @@ RSpec.describe 'ラベル管理機能', type: :system do
   let!(:lebel2) { FactoryBot.create(:label2) }
   before do
     visit sessions_new_path
-    fill_in 'session[user_email]', with: 'foo@foo.com'
+    fill_in 'session[email]', with: 'foo@foo.com'
     fill_in 'session[password]', with: 'foofoo'
     click_on 'ログインする'
     visit tasks_path

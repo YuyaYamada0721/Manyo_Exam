@@ -11,7 +11,7 @@ RSpec.describe 'ユーザー機能', type: :system do
       it 'ユーザー新規登録できる' do
         visit new_user_path
         fill_in 'user[username]', with: 'test'
-        fill_in 'user[user_email]', with: 'test@test.com'
+        fill_in 'user[email]', with: 'test@test.com'
         fill_in 'user[password]', with: 'testtest'
         fill_in 'user[password_confirmation]', with: 'testtest'
         click_on '登録'
@@ -30,7 +30,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context 'ログイン操作した場合' do
       it 'ログインできる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         expect(page).to have_content 'foo@foo.com'
@@ -39,7 +39,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '詳細ボタンを押した場合' do
       it '自分の詳細画面に飛べる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         click_on 'タスク管理へ'
@@ -50,7 +50,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '一般ユーザーが他人の詳細画面に飛ぶ場合' do
       it 'タスク一覧画面に遷移' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'bar@bar.com'
+        fill_in 'session[email]', with: 'bar@bar.com'
         fill_in 'session[password]', with: 'barbar'
         click_on 'ログインする'
         visit user_path(user)
@@ -60,7 +60,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context 'ログアウトボタン操作した場合' do
       it 'ログアウトできる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'bar@bar.com'
+        fill_in 'session[email]', with: 'bar@bar.com'
         fill_in 'session[password]', with: 'barbar'
         click_on 'ログインする'
         click_on 'ログアウト'
@@ -72,7 +72,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '管理ユーザーは管理画面遷移操作した場合' do
       it '管理画面にアクセスできる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         click_on '管理画面'
@@ -82,7 +82,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '一般ユーザーが管理画面遷移操作した場合' do
       it '管理画面にアクセスできない' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'bar@bar.com'
+        fill_in 'session[email]', with: 'bar@bar.com'
         fill_in 'session[password]', with: 'barbar'
         click_on 'ログインする'
         click_on '管理画面'
@@ -92,13 +92,13 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '管理ユーザは管理画面でユーザーの新規登録操作した場合' do
       it 'ユーザー新規登録できる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         click_on '管理画面'
         click_on '新規登録'
         fill_in 'user[username]', with: 'test'
-        fill_in 'user[user_email]', with: 'test@test.com'
+        fill_in 'user[email]', with: 'test@test.com'
         fill_in 'user[password]', with: 'testtest'
         fill_in 'user[password_confirmation]', with: 'testtest'
         click_on '登録'
@@ -108,7 +108,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '管理ユーザーは一般ユーザーの詳細画面遷移操作した場合' do
       it 'ユーザー詳細画面にアクセスできる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         visit user_path(user2)
@@ -118,7 +118,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '管理ユーザーは管理画面でユーザー編集操作した場合' do
       it 'ユーザーの編集ができる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         click_on '管理画面'
@@ -133,7 +133,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context '管理ユーザーは管理画面でユーザー削除操作した場合' do
       it 'ユーザー削除できる' do
         visit sessions_new_path
-        fill_in 'session[user_email]', with: 'foo@foo.com'
+        fill_in 'session[email]', with: 'foo@foo.com'
         fill_in 'session[password]', with: 'foofoo'
         click_on 'ログインする'
         click_on '管理画面'

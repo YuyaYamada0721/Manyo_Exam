@@ -14,7 +14,7 @@ ja:
         priority: 優先順位
       user:
         username: 名前
-        user_email: メールアドレス
+        email: メールアドレス
         password_digest: パスワード
       label:
         label_name: ラベル
