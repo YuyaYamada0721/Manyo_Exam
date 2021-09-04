@@ -40,17 +40,17 @@ Label.create!(
 
 Task.create!(
   [
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 1 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 2 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 3 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4 },
-    { name: 'test', task_content: 'test', expiration_deadline: Time.current, user_id: 4 }
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 1 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 1 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 1 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 2 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 2 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 2 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 3 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 3 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 3 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 4 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 4 },
+    { name: 'test', content: 'test', expiration_deadline: Time.current, user_id: 4 }
   ]
 )

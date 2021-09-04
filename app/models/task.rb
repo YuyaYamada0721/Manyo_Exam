@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
-  validates :task_content, presence: true
+  validates :content, presence: true
 
   belongs_to :user
   has_many :labellings, dependent: :destroy

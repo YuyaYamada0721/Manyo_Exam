@@ -16,7 +16,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '作成したタスクが表示される' do
         visit new_task_path
         fill_in 'task[name]', with: 'あああ'
-        fill_in 'task[task_content]', with: 'いいい'
+        fill_in 'task[content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
         find('#task_status').all('option')[1].select_option
         click_on 'タスク登録'

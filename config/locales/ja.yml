@@ -8,7 +8,7 @@ ja:
     attributes:
       task:
         name: タスク名
-        task_content: タスク内容
+        content: タスク内容
         expiration_deadline: 終了期限
         status: ステータス
         priority: 優先順位
