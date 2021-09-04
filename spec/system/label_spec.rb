@@ -15,7 +15,7 @@ RSpec.describe 'ラベル管理機能', type: :system do
     context 'タスクを新規作成時、ラベルを選択した場合' do
       it 'ラベルが登録される' do
         visit new_task_path
-        fill_in 'task[task_name]', with: 'あああ'
+        fill_in 'task[name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
         find('#task_status').all('option')[1].select_option
@@ -28,7 +28,7 @@ RSpec.describe 'ラベル管理機能', type: :system do
     context 'ラベルを複数登録した場合' do
       it '複数のラベルが登録される' do
         visit new_task_path
-        fill_in 'task[task_name]', with: 'あああ'
+        fill_in 'task[name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
         find('#task_status').all('option')[1].select_option
@@ -73,7 +73,7 @@ RSpec.describe 'ラベル管理機能', type: :system do
         check 'Ruby'
         click_on 'タスク登録'
         visit new_task_path
-        fill_in 'task[task_name]', with: 'あああ'
+        fill_in 'task[name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
         find('#task_status').all('option')[1].select_option

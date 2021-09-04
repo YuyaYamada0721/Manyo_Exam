@@ -17,7 +17,7 @@
     </tr>
     <% @near_the_end_task.each do |task| %>
       <tr>
-        <td><%= task.task_name %></td>
+        <td><%= task.name %></td>
         <td><%= task.task_content %></td>
         <td><%= task.expiration_deadline %></td>
         <td><%= task.status %></td>
@@ -39,7 +39,7 @@
     </tr>
     <% @expired_task.each do |task| %>
       <tr>
-        <td><%= task.task_name %></td>
+        <td><%= task.name %></td>
         <td><%= task.task_content %></td>
         <td><%= task.expiration_deadline %></td>
         <td><%= task.status %></td>

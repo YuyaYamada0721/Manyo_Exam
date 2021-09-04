@@ -15,7 +15,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
         visit new_task_path
-        fill_in 'task[task_name]', with: 'あああ'
+        fill_in 'task[name]', with: 'あああ'
         fill_in 'task[task_content]', with: 'いいい'
         fill_in 'task[expiration_deadline]', with: '002021/06/03'
         find('#task_status').all('option')[1].select_option
@@ -61,7 +61,7 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '検索機能' do
     context '検索をした場合' do
       it 'タイトルで検索できる' do
-        fill_in 'task[task_name]', with: 'test_name2'
+        fill_in 'task[name]', with: 'test_name2'
         click_on '検索'
         expect(page).to have_content 'test_name2'
         expect(page).to have_no_content 'test_name3'
@@ -69,7 +69,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'タスク名であいまい検索をした場合' do
       it '検索キーワードを含むタスクで絞り込まれる' do
-        fill_in 'task[task_name]', with: '3'
+        fill_in 'task[name]', with: '3'
         click_on '検索'
         expect(page).to have_content 'test_name3'
       end
@@ -83,7 +83,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'タイトルのあいまい検索とステータス検索をした場合' do
       it '検索キーワードをタイトルに含み、かつステータスに完全一致するタスクが絞り込まれる' do
-        fill_in 'task[task_name]', with: '3'
+        fill_in 'task[name]', with: '3'
         find("option[value='未着手']").select_option
         click_on '検索'
         expect(page).to have_content 'test_name3'

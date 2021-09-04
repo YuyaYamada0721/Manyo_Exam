@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  validates :task_name, presence: true, length: { maximum: 100 }
+  validates :name, presence: true, length: { maximum: 100 }
   validates :task_content, presence: true
 
   belongs_to :user
@@ -18,7 +18,7 @@ class Task < ApplicationRecord
     高: 2
   }
 
-  scope :task_name_fuzzy_search, ->(params) { where('task_name LIKE ?', "%#{params}%") }
+  scope :name_fuzzy_search, ->(params) { where('name LIKE ?', "%#{params}%") }
   scope :status_search, ->(params) { where(status: params) }
 
   scope :near_the_end, -> { where(expiration_deadline: Time.zone.today..Time.zone.today + 3) }

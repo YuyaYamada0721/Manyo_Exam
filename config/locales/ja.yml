@@ -7,7 +7,7 @@ ja:
       label: ラベル
     attributes:
       task:
-        task_name: タスク名
+        name: タスク名
         task_content: タスク内容
         expiration_deadline: 終了期限
         status: ステータス

@@ -2,7 +2,7 @@
 
 <%= form_with( model: Task.new , url: tasks_path, method: :get, local: true) do |form| %>
   <%= form.label :タスク名： %>
-  <%= form.text_field :task_name %>
+  <%= form.text_field :name %>
   <%= form.label :ステータス： %>
   <%= form.select :status, Task.statuses.keys, include_blank: '-' , selected: '-' %>
   <%= form.select('label_id', Label.pluck(:label_name, :id), { include_blank: '-' }) %>
@@ -22,7 +22,7 @@
   </tr>
 <% @tasks.each do |task| %>
   <tr>
-    <td class="task_row"><%= task.task_name %></td>
+    <td class="task_row"><%= task.name %></td>
     <td><%= task.task_content %></td>
     <td><%= task.expiration_deadline %></td>
     <td><%= task.status %></td>

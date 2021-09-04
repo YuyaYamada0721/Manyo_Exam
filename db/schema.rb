@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_073840) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "task_name", null: false
+    t.string "name", null: false
     t.text "task_content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_073840) do
     t.integer "status", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.bigint "user_id"
-    t.index ["task_name", "status"], name: "index_tasks_on_task_name_and_status"
+    t.index ["name", "status"], name: "index_tasks_on_name_and_status"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
