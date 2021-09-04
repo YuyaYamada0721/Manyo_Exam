@@ -8,7 +8,7 @@
     </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.user_name %></td>
+      <td><%= user.username %></td>
       <td><%= user.task_ids.count %></td>
       <td><%= user.admin %></td>
       <td><%= link_to '詳細', user, class: "btn btn-info" %></td>

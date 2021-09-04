@@ -10,7 +10,7 @@ RSpec.describe 'ユーザー機能', type: :system do
     context 'ユーザー新規作成した場合' do
       it 'ユーザー新規登録できる' do
         visit new_user_path
-        fill_in 'user[user_name]', with: 'test'
+        fill_in 'user[username]', with: 'test'
         fill_in 'user[user_email]', with: 'test@test.com'
         fill_in 'user[password]', with: 'testtest'
         fill_in 'user[password_confirmation]', with: 'testtest'
@@ -97,7 +97,7 @@ RSpec.describe 'ユーザー機能', type: :system do
         click_on 'ログインする'
         click_on '管理画面'
         click_on '新規登録'
-        fill_in 'user[user_name]', with: 'test'
+        fill_in 'user[username]', with: 'test'
         fill_in 'user[user_email]', with: 'test@test.com'
         fill_in 'user[password]', with: 'testtest'
         fill_in 'user[password_confirmation]', with: 'testtest'
@@ -123,7 +123,7 @@ RSpec.describe 'ユーザー機能', type: :system do
         click_on 'ログインする'
         click_on '管理画面'
         click_link '編集', href: edit_admin_user_path(user2)
-        fill_in 'user[user_name]', with: 'barr'
+        fill_in 'user[username]', with: 'barr'
         fill_in 'user[password]', with: 'barbar'
         fill_in 'user[password_confirmation]', with: 'barbar'
         click_on '更新'
@@ -138,10 +138,10 @@ RSpec.describe 'ユーザー機能', type: :system do
         click_on 'ログインする'
         click_on '管理画面'
         click_link '削除', href: admin_user_path(user2)
-        expect {
+        expect do
           page.accept_confirm '削除しますか？'
           expect(page).to have_content 'bar'
-        }
+        end
       end
     end
   end
