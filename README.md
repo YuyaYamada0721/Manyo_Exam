@@ -1,30 +1,20 @@
-# バージョン
-・ Ruby：2.6.5
-・ Ruby on Rails：5.2.5
+# タスク管理アプリケーション「Taskun」
 
-# ER図
-|users||
-|:-|-:|
-|id|
-|username|string|
-|user_email|string|
-|password_digest|string|
+## 概要
+万葉課題
 
-|tasks||
-|:-|-:|
-|id<br>user_id(FK)<br>label_id(FK)|
-|task_name|string|
-|task_content|text|
-|expiration_deadline|date|
-|status|string|
-|priority|integer|
+## バージョン
+* バックエンド
+  * Ruby 2.6.5
+  * Ruby on Rails 5.2.5
+  * PostgreSQL 13.3
 
-|labels||
-|:-|-:|
-|id|
-|label_name|string|
 
-# Herokuへのデプロイ手順
+## ER図
+![ER図](https://user-images.githubusercontent.com/78161698/132078628-f8166325-5003-406a-9d76-33a278d81feb.png)
+
+
+## Herokuへのデプロイ手順
 1. Herokuにログインする
 ```
 heroku login
@@ -53,8 +43,8 @@ heroku buildpacks:add --index 1 heroku/nodejs
 ```
 7. Herokuにデプロイする
 ```
-#masterブランチにいる時
+# masterブランチにいる時
 git push heroku master
-#masterブランチ以外にいる時
+# masterブランチ以外にいる時
 git push heroku 現在いるブランチ:master
 ```
