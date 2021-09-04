@@ -13,7 +13,7 @@ ja:
         status: ステータス
         priority: 優先順位
       user:
-        user_name: 名前
+        username: 名前
         user_email: メールアドレス
         password_digest: パスワード
       label:

@@ -6,7 +6,7 @@
 |users||
 |:-|-:|
 |id|
-|user_name|string|
+|username|string|
 |user_email|string|
 |password_digest|string|
 
