@@ -16,7 +16,7 @@
     <td><%= @task.status %></td>
     <td><%= @task.priority %></td>
       <% @task.labels.each do |label| %>
-        <td><%= label.label_name %></td>
+        <td><%= label.name %></td>
       <% end %>
   </tr>
 </table>

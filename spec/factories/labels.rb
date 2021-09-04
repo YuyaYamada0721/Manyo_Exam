@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :label do
-    label_name { 'Ruby' }
+    name { 'Ruby' }
   end
   factory :label2, class: Label do
-    label_name { 'Java' }
+    name { 'Java' }
   end
 end

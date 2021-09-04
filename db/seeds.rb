@@ -25,16 +25,16 @@ User.create!(
 
 Label.create!(
   [
-    { label_name: 'Ruby' },
-    { label_name: 'Rails' },
-    { label_name: 'Python' },
-    { label_name: 'Java' },
-    { label_name: 'JavaScript' },
-    { label_name: 'PHP' },
-    { label_name: 'HTML' },
-    { label_name: 'CSS' },
-    { label_name: 'VBS' },
-    { label_name: 'GGG' }
+    { name: 'Ruby' },
+    { name: 'Rails' },
+    { name: 'Python' },
+    { name: 'Java' },
+    { name: 'JavaScript' },
+    { name: 'PHP' },
+    { name: 'HTML' },
+    { name: 'CSS' },
+    { name: 'VBS' },
+    { name: 'GGG' }
   ]
 )
 

@@ -17,7 +17,7 @@ ja:
         email: メールアドレス
         password_digest: パスワード
       label:
-        label_name: ラベル
+        name: ラベル
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
