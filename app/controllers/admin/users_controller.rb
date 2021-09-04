@@ -3,7 +3,12 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user
 
   def index
-    @users = User.all.includes(:tasks)
+    @users = User.all.includes(:tasks).page(params[:page]).per(5)
+  end
+
+  def show
+    @near_the_end_task = @user.tasks.near_the_end.completion_excepting
+    @expired_task = @user.tasks.expired.completion_excepting
   end
 
   def new
@@ -45,9 +50,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def admin_user
-    unless current_user.admin?
-      redirect_to tasks_path
-      flash[:notice] = '管理者以外はアクセスできない'
-    end
+    return if current_user.admin?
+
+    redirect_to tasks_path
+    flash[:notice] = '管理者以外はアクセスできません。'
   end
 end
